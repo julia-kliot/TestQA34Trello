@@ -1,5 +1,7 @@
 package tests;
 
+import models.Board;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BoardCreation extends TestBase {
@@ -8,13 +10,18 @@ public class BoardCreation extends TestBase {
     @Test
     public void boardCreation1(){
 
+        int boardCountBeforeCreation= app.getBoard().getBoardCount();
+        Board board = new Board().setTitle("testQa34");
         app.getBoard().initBoardCreationFromHeader();
-        app.getBoard().fillboardCreationForm();
+        app.getBoard().fillboardCreationForm(board);
         app.getBoard().scrollDownTheForm();
-        app.getBoard().pause();
+        app.getBoard().pause(2000);
         app.getBoard().submitBoardCreation();
-        app.getBoard().pause();
+        app.getBoard().pause(2000);
         app.getBoard().returnToHomePage();
+
+        int boardCountAfterCreation= app.getBoard().getBoardCount();
+        Assert.assertEquals(boardCountAfterCreation,boardCountBeforeCreation+1);
     }
 
 }

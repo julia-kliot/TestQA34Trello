@@ -19,6 +19,7 @@ public class ApplicationManager {
 
         user = new UserHepler(wd);
         board= new BoardHelper(wd);
+        user.login("juliakliot.jk@gmail.com","misha240613");
     }
 
     public void stop() {
