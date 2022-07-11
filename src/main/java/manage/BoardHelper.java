@@ -45,4 +45,29 @@ public class BoardHelper extends HelperBase{
         return  wd.findElements(By.xpath("//*[contains(@class,'icon-clock')]/../../..//li")).size();
 
     }
+
+    public boolean isCreated() {
+        return wd.findElements(By.cssSelector(".list-name-input")).size()>0;
+
+    }
+
+    public void clickOnTheFirstBoard() {
+        click(By.cssSelector(".board-tile-details"));
+    }
+
+    public void openSideBoardMenu() {
+        click(By.cssSelector(".js-show-sidebar"));
+
+    }
+
+    public void openMore() {
+        click(By.cssSelector(".js-open-more"));
+    }
+
+    public void deleteBoard() {
+        click(By.cssSelector(".js-close-board"));
+        click(By.cssSelector(".js-confirm"));
+        click(By.cssSelector("[data-test-id= 'close-board-delete-board-button']"));
+        click(By.cssSelector("[data-test-id= 'close-board-delete-board-confirm-button']"));
+    }
 }
