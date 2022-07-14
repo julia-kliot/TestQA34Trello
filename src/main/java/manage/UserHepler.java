@@ -8,6 +8,7 @@ public class UserHepler extends HelperBase{
     public UserHepler(WebDriver wd) {
         super(wd);
     }
+
     public void initLogin() {
         click(By.cssSelector("[href='/login']"));
     }
@@ -37,8 +38,8 @@ public class UserHepler extends HelperBase{
         type(By.cssSelector("#user"), email);
         click(By.cssSelector("#login"));
         pause(5000);
-        type(By.name("password"), password);
-        click(By.id("login-submit"));
+        type(By.cssSelector("#password"), password);
+        click(By.cssSelector("#login-submit"));
 
 
     }
