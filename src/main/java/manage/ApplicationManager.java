@@ -2,6 +2,8 @@ package manage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,9 +17,13 @@ public class ApplicationManager {
     BoardHelper board;
     ListHelper list;
     CardHelper card;
+    AtlassianHelper atlassian;
 
     public void init() {
         wd = new ChromeDriver();
+        WebDriverListener listener= new MyListener();
+        wd= new EventFiringDecorator(listener).decorate(wd);
+
         logger.info("Test starts---");
         wd.navigate().to("https://trello.com/");
         wd.manage().window().maximize();
@@ -27,6 +33,7 @@ public class ApplicationManager {
         board= new BoardHelper(wd);
         list = new ListHelper(wd);
         card = new CardHelper(wd);
+        atlassian= new AtlassianHelper(wd);
 
         user.login("juliakliot.jk@gmail.com","misha240613");
     }
@@ -50,5 +57,13 @@ public class ApplicationManager {
 
     public CardHelper getCard() {
         return card;
+    }
+
+    public AtlassianHelper getAtlassian() {
+        return atlassian;
+    }
+
+    public String getUrl(){
+        return wd.getCurrentUrl();
     }
 }

@@ -4,6 +4,9 @@ import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserHepler extends HelperBase{
     public UserHepler(WebDriver wd) {
         super(wd);
@@ -44,4 +47,23 @@ public class UserHepler extends HelperBase{
 
     }
 
+    public void clickOnAvatar() {
+        click(By.cssSelector("[data-test-id = 'header-member-menu-button']"));
+    }
+
+    public void openUserProfile() {
+        click(By.cssSelector("[data-test-id='header-member-menu-profile']"));
+    }
+
+    public void goToAtlassianAccount() {
+        click(By.cssSelector("[[href$='manage-profile']]"));
+        List<String> tabs= new ArrayList<>(wd.getWindowHandles());
+        wd.switchTo().window((tabs.get(1)));
+    }
+
+    public void returnToTrello() {
+        List<String>tabs= new ArrayList<>(wd.getWindowHandles());
+        wd.close();
+        wd.switchTo().window((tabs.get(0)));
+    }
 }
