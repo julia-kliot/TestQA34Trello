@@ -70,4 +70,43 @@ public class BoardHelper extends HelperBase{
         click(By.cssSelector("[data-test-id= 'close-board-delete-board-button']"));
         click(By.cssSelector("[data-test-id= 'close-board-delete-board-confirm-button']"));
     }
+
+    public void statrBoardCreation() {
+        click(By.cssSelector("[data-test-id='create-board-tile']"));
+    }
+
+    public void closecreationWindow() {
+        click(By.cssSelector("[data-test-id='popover-close']"));
+    }
+
+    public void createBoard() {
+        click(By.cssSelector("[data-test-id='header-create-menu-button']"));
+    }
+
+    public void closecreationWindow2() {
+        click(By.cssSelector("[data-test-id='popover-close']"));
+    }
+
+    public void retutnToCreationPage() {
+        click(By.cssSelector("._0F1JkilrBuDsnA"));
+    }
+
+
+    public void chooseBackground() {
+        click(By.cssSelector("[aria-label='CheckIcon']"));
+    }
+
+    public void openBoard() {
+        click(By.cssSelector("[data-test-id='workspace-chooser-trigger-button']"));
+    }
+
+    public void openBoardaAgain() {
+        click(By.cssSelector(".JIXQq8gDYY04N6"));
+    }
+
+    public void closeBoard2() {
+        click(By.cssSelector(".js-close-board"));
+        click(By.cssSelector(".js-confirm"));
+
+    }
 }

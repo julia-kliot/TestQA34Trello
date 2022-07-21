@@ -13,10 +13,28 @@ public class BoardDeletion extends TestBase {
         app.getBoard().openSideBoardMenu();
         app.getBoard().openMore();
         app.getBoard().deleteBoard();
+        logger.info("The board is deleted---");
 
         int boardCountAfterDeletion = app.getBoard().getBoardCount();
         Assert.assertEquals(boardCountAfterDeletion, boardCountBeforeDeletion - 1);
 
+    }
+
+    @Test
+    public void refuseBoardDeletion() {
+
+        app.getBoard().clickOnTheFirstBoard();
+        app.getBoard().openSideBoardMenu();
+        app.getBoard().openMore();
+        app.getBoard().closeBoard2();
+        app.getBoard().openBoard();
+        app.getBoard().openBoardaAgain();
+        app.getBoard().pause(2000);
+        app.getBoard().isCreated();
+        logger.info("Board is reopened---");
+
+        Assert.assertTrue(app.getBoard().isCreated());
 
     }
+
 }

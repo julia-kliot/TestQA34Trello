@@ -41,4 +41,15 @@ public class HelperBase {
         wd.navigate().to("https://www.google.com/");
 
     }
+    public void takeScreenShots (String pathToFile){
+        File tmp = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
+        File screen = new File(pathToFile);
+
+        try {
+            Files.copy(tmp,screen);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

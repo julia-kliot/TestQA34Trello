@@ -19,7 +19,9 @@ public class UserHepler extends HelperBase{
     public void fillInLoginForm(User user) throws InterruptedException {
         type(By.cssSelector("#user"), user.getEmail());
         click(By.cssSelector("#login"));
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        pause(2000);
+        takeScreenShots("C:/Users/julia/Documents/QA/QA_Automation/QA/TestQA34Trello/src/test/resources/screenshots/screen-1.png");
         type(By.cssSelector("#password"), user.getPassword());
     }
 
