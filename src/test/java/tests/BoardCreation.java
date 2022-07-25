@@ -1,13 +1,28 @@
 package tests;
 
+import manage.MyDataProvider;
 import models.Board;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BoardCreation extends TestBase {
 
+    @Test(dataProvider = "boardData", dataProviderClass = MyDataProvider.class)
 
-    @Test
+    public void boardCreation1(String boardName) {
+        int boardCountBeforeCreation = app.getBoard().getBoardCount();
+        app.getBoard().initBoardCreationFromHeader();
+        app.getBoard().fillboardCreationForm(boardName);
+        app.getBoard().scrollDownTheForm();
+        app.getBoard().pause(2000);
+        app.getBoard().submitBoardCreation();
+        app.getBoard().pause(2000);
+        app.getBoard().returnToHomePage();
+        int boardCountAfterCreation = app.getBoard().getBoardCount();
+        Assert.assertEquals(boardCountAfterCreation, boardCountBeforeCreation + 1);
+    }
+
+    @Test()
     public void boardCreation1() {
 
         int boardCountBeforeCreation = app.getBoard().getBoardCount();
@@ -56,6 +71,7 @@ public class BoardCreation extends TestBase {
         Assert.assertTrue(app.getBoard().isCreated());
 
     }
+
     @Test
     public void boardCreationWithBackGround() {
 
