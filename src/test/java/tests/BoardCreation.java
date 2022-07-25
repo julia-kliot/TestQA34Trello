@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 public class BoardCreation extends TestBase {
 
     @Test(dataProvider = "boardData", dataProviderClass = MyDataProvider.class)
-
     public void boardCreation1(String boardName) {
         int boardCountBeforeCreation = app.getBoard().getBoardCount();
         app.getBoard().initBoardCreationFromHeader();
@@ -22,7 +21,7 @@ public class BoardCreation extends TestBase {
         Assert.assertEquals(boardCountAfterCreation, boardCountBeforeCreation + 1);
     }
 
-    @Test()
+    @Test(dataProvider = "boardDatamodel", dataProviderClass = MyDataProvider.class)
     public void boardCreation1() {
 
         int boardCountBeforeCreation = app.getBoard().getBoardCount();
@@ -39,7 +38,7 @@ public class BoardCreation extends TestBase {
         Assert.assertEquals(boardCountAfterCreation, boardCountBeforeCreation + 1);
     }
 
-    @Test(enabled = false)
+    @Test
     public void boardCreation2() {
         Board board = Board.builder().title("testQa34").build();
         logger.info("Test board creation 1" + board.getTitle());

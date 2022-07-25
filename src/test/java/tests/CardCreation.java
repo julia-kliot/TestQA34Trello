@@ -1,11 +1,12 @@
 package tests;
 
+import manage.MyDataProvider;
 import models.Card;
 import org.testng.annotations.Test;
 
 public class CardCreation extends  TestBase{
 
-    @Test
+    @Test(dataProvider = "dataCardCSV", dataProviderClass = MyDataProvider.class)
     public void cardCreation(){
         Card card = Card.builder().cardName("test1").color("green").build();
         app.getBoard().clickOnTheFirstBoard();
