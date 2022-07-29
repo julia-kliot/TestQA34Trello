@@ -4,6 +4,7 @@ import manage.ApplicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +17,7 @@ import java.time.Duration;
 
 public class TestBase {
 
-    protected static ApplicationManager app = new ApplicationManager();
+    protected static ApplicationManager app = new ApplicationManager(System.getProperty("browser", Browser.CHROME.browserName()));
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
     @BeforeSuite(alwaysRun = true)

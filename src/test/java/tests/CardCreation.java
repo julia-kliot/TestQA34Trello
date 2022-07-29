@@ -15,8 +15,15 @@ public class CardCreation extends  TestBase{
         app.getCard().fillCreationForm(card);
         app.getCard().submitCardCreation();
 
-        
-
+    }
+    @Test (groups = {"logs"},invocationCount = 1)
+    public void cardCreation2(){
+        Card card = Card.builder().cardName("test1").color("green").build();
+        app.getBoard().clickOnTheFirstBoard();
+        app.getList().createList("test11");
+        app.getCard().initCardCreation();
+        app.getCard().fillCreationForm(card);
+        app.getCard().submitCardCreation();
 
     }
 }

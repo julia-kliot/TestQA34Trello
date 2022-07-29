@@ -27,16 +27,16 @@ public class MyDataProvider {
 
     @DataProvider
     public static Object[][] boardDatamodel() {
-        //List<Object[]> list = new ArrayList<>();
+       // List<Object[]> list = new ArrayList<>();
        // list.add(new Object[]{Board.builder().title("test_qa34_model1")});
-       // list.add(new Object[]{Board.builder().title("test_qa34_model2")});
+        //list.add(new Object[]{Board.builder().title("test_qa34_model2")});
+        return new Object[][]{};
 
-        // return list.iterator();
-        return new Object[][]{{Board.builder().title("test_qa34_model1")}};
+        // //{{Board.builder().title("test_qa34_model1")}};
     }
 
     @DataProvider
-    public static Iterator<Object[]> dataCardCSV() throws IOException {
+    public  Iterator<Object[]> dataCardCSV() throws IOException {
         List<Object[]> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/data.csv")));
         reader.readLine();
