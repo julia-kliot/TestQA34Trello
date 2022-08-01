@@ -32,7 +32,10 @@ public class ApplicationManager {
             wd = new ChromeDriver();
         }else  if(browser.equals(Browser.EDGE.browserName())){
             wd = new EdgeDriver();
+
+
         }
+
 
         WebDriverListener listener= new MyListener();
         wd= new EventFiringDecorator(listener).decorate(wd);
